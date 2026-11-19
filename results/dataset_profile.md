@@ -1,0 +1,34 @@
+# Dataset profile (20 patients)
+
+- patients with both FHIR and DICOM: 20 (unpaired files: 0 by construction)
+- FHIR resources per patient: min 241, median 1026, max 7642
+- FHIR size: total 72.0 MB (mean 3.6, max 17.0)
+- DICOM size: total 640 MB, per file 32.0-32.0 MB
+- DICOM headers (modality, rows, cols, frames, bits): {('OT', 256, 256, 256, 16): 20}
+- patients with an ImagingStudy resource: 20/20
+- distinct hospitals 47, doctors 48, insurers 6
+- gender: {'male': 11, 'female': 9}
+- top resource types: Observation 10174, Claim 6220, MedicationRequest 3528, DiagnosticReport 3519, Encounter 2692, DocumentReference 2692, ExplanationOfBenefit 2692, Procedure 388
+
+| patient                    | gender   |   fhir_resources |   encounters |   imaging_studies |   hospitals |   doctors | insurer                |   fhir_MB |   dicom_MB |
+|:---------------------------|:---------|-----------------:|-------------:|------------------:|------------:|----------:|:-----------------------|----------:|-----------:|
+| Abe604 Frami345            | male     |              633 |           35 |                 1 |           2 |         2 | Medicare               |      1.27 |      32.02 |
+| Adolfo777 Yost751          | male     |             5630 |          392 |                 2 |           3 |         3 | Medicare               |     11.62 |      32.02 |
+| Ahmad985 Carter549         | male     |              941 |           90 |                 2 |           3 |         3 | Anthem                 |      2.16 |      32.02 |
+| Al123 Medhurst46           | male     |              333 |           32 |                 1 |           3 |         3 | Medicare               |      0.8  |      32.02 |
+| Alda400 Kris249            | female   |             1228 |           91 |                 1 |           2 |         2 | Medicare               |      2.71 |      32.02 |
+| Alejandro916 Konopelski743 | male     |             4506 |          323 |                 1 |           3 |         3 | Medicare               |      9.1  |      32.02 |
+| Aleta47 Ortiz186           | female   |              241 |           27 |                 2 |           2 |         2 | Dual Eligible          |      0.62 |      32.02 |
+| Aletha771 Waelchi213       | female   |              271 |           41 |                 2 |           1 |         1 | Medicare               |      0.84 |      32.02 |
+| Alex454 Berge125           | male     |             7642 |          704 |                 1 |           5 |         5 | Medicare               |     17.04 |      32.02 |
+| Alfonzo975 Armstrong51     | male     |              295 |           17 |                 1 |           2 |         2 | Medicare               |      0.66 |      32.02 |
+| Almeta56 Pollich983        | female   |              851 |           72 |                 1 |           3 |         3 | Medicare               |      1.89 |      32.02 |
+| Almeta56 Schuster709       | female   |              888 |           86 |                 2 |           3 |         3 | Medicare               |      2.11 |      32.02 |
+| Alvaro283 Altenwerth646    | male     |             1386 |           97 |                 1 |           4 |         4 | UnitedHealthcare       |      3.06 |      32.02 |
+| Alyce744 Lubowitz58        | female   |              959 |          118 |                 1 |           3 |         3 | Medicare               |      2.45 |      32.02 |
+| Ana972 Gerlach374          | female   |             1094 |           93 |                 1 |           2 |         2 | Medicare               |      2.49 |      32.02 |
+| Andre610 Wilderman619      | male     |             1601 |          115 |                 2 |           3 |         3 | Medicare               |      3.51 |      32.02 |
+| Andres25 Barrows492        | male     |             1240 |           93 |                 1 |           4 |         4 | Blue Cross Blue Shield |      2.75 |      32.02 |
+| Andrew29 Wisozk929         | male     |             1157 |          102 |                 2 |           2 |         2 | Blue Cross Blue Shield |      2.68 |      32.02 |
+| Angelic427 Durgan499       | female   |             1172 |          104 |                 1 |           2 |         2 | Medicare               |      2.66 |      32.02 |
+| Angelita915 Bauch723       | female   |              667 |           60 |                 1 |           3 |         3 | NO_INSURANCE           |      1.6  |      32.02 |

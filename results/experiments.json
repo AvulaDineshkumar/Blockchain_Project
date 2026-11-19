@@ -1,0 +1,543 @@
+{
+  "patients": 20,
+  "records": 60,
+  "participants": {
+    "hospital": 47,
+    "doctor": 48,
+    "insurer": 6,
+    "auditor": 1,
+    "patient": 20
+  },
+  "load_seconds": 13.1,
+  "E1_normal_sharing": {
+    "requests": 80,
+    "granted_and_hash_verified": 80,
+    "failed": 0
+  },
+  "E2_unauthorized": {
+    "doctor_without_consent:DENIED:NO_CONSENT": 20,
+    "insurer_asks_MRI:DENIED:INSURER_POLICY": 20,
+    "insurer_asks_full_FHIR:DENIED:INSURER_POLICY": 20,
+    "auditor_content:DENIED:AUDITOR_NO_CONTENT": 20,
+    "unregistered_signer:DENIED:UNREGISTERED": 1,
+    "impersonation:DENIED:UNREGISTERED": 1,
+    "modified_after_signing:REJECTED_BAD_SIGNATURE": 1,
+    "replay:DENIED:REPLAY": 1
+  },
+  "E10_hospital_to_hospital": {
+    "hospital_B_without_consent": "DENIED:NO_CONSENT",
+    "hospital_B_with_consent": "GRANTED:CONSENT|OK"
+  },
+  "E11_privacy_scan": {
+    "ledger_bytes_scanned": 398962,
+    "patient_names_found_on_chain": 0,
+    "full_patient_uuids_found": 0,
+    "fhir_markers_found (birthDate, resourceType)": 0
+  },
+  "E3_expiry_revoke": {
+    "after_revoke": "DENIED:NO_CONSENT",
+    "within_validity": "GRANTED:CONSENT|OK",
+    "after_expiry": "DENIED:EXPIRED"
+  },
+  "E4_tamper": {
+    "ciphertext_bit_flip": "GRANTED:CONSENT|TAMPERED_CIPHERTEXT",
+    "insider_replaces_file": "GRANTED:CONSENT|HASH_MISMATCH",
+    "ledger_untouched": [
+      true,
+      "ok"
+    ],
+    "ledger_result_edited": [
+      false,
+      "bad_results_hash"
+    ],
+    "ledger_edited_and_hash_recomputed": [
+      false,
+      "bad_proposer_sig"
+    ],
+    "ledger_block_deleted": [
+      false,
+      "bad_index"
+    ],
+    "ledger_blocks_reordered": [
+      false,
+      "bad_index"
+    ]
+  },
+  "E5_merkle_proof": {
+    "block": 1,
+    "txs_in_block": 122,
+    "proof_length": 7,
+    "proof_bytes": 231,
+    "valid_proof_accepted": true,
+    "wrong_tx_rejected": true
+  },
+  "E7_recovery": {
+    "blocks_missed": 10,
+    "height_before": 199,
+    "sync_ms": 4.2,
+    "recovered_chain_verifies": true,
+    "consistent_with_peers": true
+  },
+  "E9_audit_trail": {
+    "patient": "P-b8dd1798",
+    "events": 32,
+    "denied_events": 20,
+    "granted_events": 7,
+    "sample": [
+      {
+        "block": 23,
+        "time": 1700000000.0,
+        "record": "*",
+        "requester": "P-b8dd1798",
+        "role": "patient",
+        "result": "GRANT_CONSENT:OK",
+        "tx_id": "0214271734cae96beed5f0a4dd2e5a3f3f02d88b73dc3d4ba13f1a6f68e02f3e"
+      },
+      {
+        "block": 23,
+        "time": 1700000000.0,
+        "record": "*",
+        "requester": "P-b8dd1798",
+        "role": "patient",
+        "result": "GRANT_CONSENT:OK",
+        "tx_id": "d9ff7a2051c5489f5e65b716c140103565ccc86c977068f4ea54c0ff6adf3580"
+      },
+      {
+        "block": 24,
+        "time": 1700000000.0,
+        "record": "FHIR-b8dd1798",
+        "requester": "D-Dr-Darrick836-Franecki195NEWTON-WELLESLE",
+        "role": "doctor",
+        "result": "GRANTED:CONSENT",
+        "tx_id": "c29eb50258b784c2af1b95ef4d28c8fb36c946d9810a80af1ae9fbab7666c5db"
+      },
+      {
+        "block": 25,
+        "time": 1700000000.0,
+        "record": "MRI-b8dd1798",
+        "requester": "D-Dr-Darrick836-Franecki195NEWTON-WELLESLE",
+        "role": "doctor",
+        "result": "GRANTED:CONSENT",
+        "tx_id": "6e91afe1b8d8f9afa64a50196bfb76a08ba7719dbd3cad31b08e0c52b488e7f8"
+      },
+      {
+        "block": 26,
+        "time": 1700000000.0,
+        "record": "MRI-b8dd1798",
+        "requester": "P-b8dd1798",
+        "role": "patient",
+        "result": "GRANTED:OWNER",
+        "tx_id": "da5d1ba09aaab43177d68332fc127b45b00060bc4bf41e1f505f621f75b9915d"
+      },
+      {
+        "block": 27,
+        "time": 1700000000.0,
+        "record": "INS-b8dd1798",
+        "requester": "I-Medicare",
+        "role": "insurer",
+        "result": "GRANTED:CONSENT",
+        "tx_id": "ce7ae6f717861354026369e6cb9f3f4a0bf7500b73dd1df0b1c05f22289a9937"
+      }
+    ]
+  },
+  "E8_storage": {
+    "records": 60,
+    "plaintext_bytes": 750921825,
+    "off_chain_ciphertext_bytes": 717360501,
+    "on_chain_bytes_total": 427280,
+    "on_chain_bytes_without_certs": 277235,
+    "on_chain_share_of_data_pct": 0.0595,
+    "blocks": 210,
+    "avg_bytes_per_record_on_chain": 7121.3
+  },
+  "chain_verifies": [
+    true,
+    "ok"
+  ],
+  "E6_byzantine": [
+    {
+      "nodes": 4,
+      "f": 1,
+      "case": "no_fault",
+      "faulty_nodes": 0,
+      "made_progress": true,
+      "view_changes": 0,
+      "latency_ms": 15.7,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": false
+    },
+    {
+      "nodes": 4,
+      "f": 1,
+      "case": "f_offline",
+      "faulty_nodes": 1,
+      "made_progress": true,
+      "view_changes": 0,
+      "latency_ms": 15.7,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": false
+    },
+    {
+      "nodes": 4,
+      "f": 1,
+      "case": "f_bogus_voters",
+      "faulty_nodes": 1,
+      "made_progress": true,
+      "view_changes": 0,
+      "latency_ms": 16.2,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": false
+    },
+    {
+      "nodes": 4,
+      "f": 1,
+      "case": "bad_primary_forged_result",
+      "faulty_nodes": 1,
+      "made_progress": true,
+      "view_changes": 1,
+      "latency_ms": 241.1,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": false
+    },
+    {
+      "nodes": 4,
+      "f": 1,
+      "case": "bad_primary_bad_signature",
+      "faulty_nodes": 1,
+      "made_progress": true,
+      "view_changes": 1,
+      "latency_ms": 241.3,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": false
+    },
+    {
+      "nodes": 4,
+      "f": 1,
+      "case": "equivocating_primary",
+      "faulty_nodes": 1,
+      "made_progress": true,
+      "view_changes": 1,
+      "latency_ms": 241.4,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": false
+    },
+    {
+      "nodes": 4,
+      "f": 1,
+      "case": "f_plus_1_offline",
+      "faulty_nodes": 2,
+      "made_progress": false,
+      "view_changes": 4,
+      "latency_ms": 871.0,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": true
+    },
+    {
+      "nodes": 4,
+      "f": 1,
+      "case": "f_plus_1_bogus_voters",
+      "faulty_nodes": 2,
+      "made_progress": false,
+      "view_changes": 4,
+      "latency_ms": 902.7,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": true
+    },
+    {
+      "nodes": 7,
+      "f": 2,
+      "case": "no_fault",
+      "faulty_nodes": 0,
+      "made_progress": true,
+      "view_changes": 0,
+      "latency_ms": 15.9,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": false
+    },
+    {
+      "nodes": 7,
+      "f": 2,
+      "case": "f_offline",
+      "faulty_nodes": 2,
+      "made_progress": true,
+      "view_changes": 0,
+      "latency_ms": 15.8,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": false
+    },
+    {
+      "nodes": 7,
+      "f": 2,
+      "case": "f_bogus_voters",
+      "faulty_nodes": 2,
+      "made_progress": true,
+      "view_changes": 0,
+      "latency_ms": 16.7,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": false
+    },
+    {
+      "nodes": 7,
+      "f": 2,
+      "case": "bad_primary_forged_result",
+      "faulty_nodes": 1,
+      "made_progress": true,
+      "view_changes": 1,
+      "latency_ms": 241.4,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": false
+    },
+    {
+      "nodes": 7,
+      "f": 2,
+      "case": "bad_primary_bad_signature",
+      "faulty_nodes": 1,
+      "made_progress": true,
+      "view_changes": 1,
+      "latency_ms": 241.5,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": false
+    },
+    {
+      "nodes": 7,
+      "f": 2,
+      "case": "equivocating_primary",
+      "faulty_nodes": 1,
+      "made_progress": true,
+      "view_changes": 1,
+      "latency_ms": 241.9,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": false
+    },
+    {
+      "nodes": 7,
+      "f": 2,
+      "case": "f_plus_1_offline",
+      "faulty_nodes": 3,
+      "made_progress": false,
+      "view_changes": 7,
+      "latency_ms": 1532.6,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": true
+    },
+    {
+      "nodes": 7,
+      "f": 2,
+      "case": "f_plus_1_bogus_voters",
+      "faulty_nodes": 3,
+      "made_progress": false,
+      "view_changes": 7,
+      "latency_ms": 1581.5,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": true
+    },
+    {
+      "nodes": 10,
+      "f": 3,
+      "case": "no_fault",
+      "faulty_nodes": 0,
+      "made_progress": true,
+      "view_changes": 0,
+      "latency_ms": 16.2,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": false
+    },
+    {
+      "nodes": 10,
+      "f": 3,
+      "case": "f_offline",
+      "faulty_nodes": 3,
+      "made_progress": true,
+      "view_changes": 0,
+      "latency_ms": 16.0,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": false
+    },
+    {
+      "nodes": 10,
+      "f": 3,
+      "case": "f_bogus_voters",
+      "faulty_nodes": 3,
+      "made_progress": true,
+      "view_changes": 0,
+      "latency_ms": 17.0,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": false
+    },
+    {
+      "nodes": 10,
+      "f": 3,
+      "case": "bad_primary_forged_result",
+      "faulty_nodes": 1,
+      "made_progress": true,
+      "view_changes": 1,
+      "latency_ms": 241.6,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": false
+    },
+    {
+      "nodes": 10,
+      "f": 3,
+      "case": "bad_primary_bad_signature",
+      "faulty_nodes": 1,
+      "made_progress": true,
+      "view_changes": 1,
+      "latency_ms": 242.0,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": false
+    },
+    {
+      "nodes": 10,
+      "f": 3,
+      "case": "equivocating_primary",
+      "faulty_nodes": 1,
+      "made_progress": true,
+      "view_changes": 1,
+      "latency_ms": 242.4,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": false
+    },
+    {
+      "nodes": 10,
+      "f": 3,
+      "case": "f_plus_1_offline",
+      "faulty_nodes": 4,
+      "made_progress": false,
+      "view_changes": 10,
+      "latency_ms": 2194.9,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": true
+    },
+    {
+      "nodes": 10,
+      "f": 3,
+      "case": "f_plus_1_bogus_voters",
+      "faulty_nodes": 4,
+      "made_progress": false,
+      "view_changes": 10,
+      "latency_ms": 2262.4,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": true
+    },
+    {
+      "nodes": 13,
+      "f": 4,
+      "case": "no_fault",
+      "faulty_nodes": 0,
+      "made_progress": true,
+      "view_changes": 0,
+      "latency_ms": 16.5,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": false
+    },
+    {
+      "nodes": 13,
+      "f": 4,
+      "case": "f_offline",
+      "faulty_nodes": 4,
+      "made_progress": true,
+      "view_changes": 0,
+      "latency_ms": 16.2,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": false
+    },
+    {
+      "nodes": 13,
+      "f": 4,
+      "case": "f_bogus_voters",
+      "faulty_nodes": 4,
+      "made_progress": true,
+      "view_changes": 0,
+      "latency_ms": 17.6,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": false
+    },
+    {
+      "nodes": 13,
+      "f": 4,
+      "case": "bad_primary_forged_result",
+      "faulty_nodes": 1,
+      "made_progress": true,
+      "view_changes": 1,
+      "latency_ms": 241.9,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": false
+    },
+    {
+      "nodes": 13,
+      "f": 4,
+      "case": "bad_primary_bad_signature",
+      "faulty_nodes": 1,
+      "made_progress": true,
+      "view_changes": 1,
+      "latency_ms": 242.1,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": false
+    },
+    {
+      "nodes": 13,
+      "f": 4,
+      "case": "equivocating_primary",
+      "faulty_nodes": 1,
+      "made_progress": true,
+      "view_changes": 1,
+      "latency_ms": 243.0,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": false
+    },
+    {
+      "nodes": 13,
+      "f": 4,
+      "case": "f_plus_1_offline",
+      "faulty_nodes": 5,
+      "made_progress": false,
+      "view_changes": 13,
+      "latency_ms": 2858.1,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": true
+    },
+    {
+      "nodes": 13,
+      "f": 4,
+      "case": "f_plus_1_bogus_voters",
+      "faulty_nodes": 5,
+      "made_progress": false,
+      "view_changes": 13,
+      "latency_ms": 2944.2,
+      "honest_nodes_consistent": true,
+      "forged_result_on_chain": false,
+      "stalled": true
+    }
+  ]
+}

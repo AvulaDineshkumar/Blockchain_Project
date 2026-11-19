@@ -1,0 +1,62 @@
+[
+  {
+    "scenario": "1. doctor with no consent requests the MRI",
+    "result": "DENIED:NO_CONSENT"
+  },
+  {
+    "scenario": "2. authorized doctor requests the MRI (consent valid 6 s)",
+    "result": "GRANTED:CONSENT|OK"
+  },
+  {
+    "scenario": "3. a different, unconsented doctor requests the MRI",
+    "result": "DENIED:NO_CONSENT"
+  },
+  {
+    "scenario": "4. unregistered user requests the MRI",
+    "result": "DENIED:UNREGISTERED"
+  },
+  {
+    "scenario": "5. insurer requests the billing view",
+    "result": "GRANTED:CONSENT|OK"
+  },
+  {
+    "scenario": "6. insurer requests the MRI",
+    "result": "DENIED:INSURER_POLICY"
+  },
+  {
+    "scenario": "7. same doctor after the consent expired (real 6 s)",
+    "result": "DENIED:EXPIRED"
+  },
+  {
+    "scenario": "8. stored FHIR file modified (1 bit), doctor requests it",
+    "result": "GRANTED:CONSENT|TAMPERED_CIPHERTEXT"
+  },
+  {
+    "scenario": "9. 1 validator process(es) killed ['V1']; request MRI",
+    "result": "GRANTED:CONSENT|OK"
+  },
+  {
+    "scenario": "   heights now",
+    "result": "{\"V0\": 17, \"V1\": null, \"V2\": 17, \"V3\": 17}"
+  },
+  {
+    "scenario": "10. one more killed (V2): more than f faulty",
+    "result": "NOT committed (stalled), ledger unchanged"
+  },
+  {
+    "scenario": "11. all restarted (fetch + re-verify chain from peers over TCP)",
+    "result": "stalled request committed after recovery: GRANTED:CONSENT; heights {'V0': 18, 'V1': 18, 'V2': 18, 'V3': 18}"
+  },
+  {
+    "scenario": "12. every validator's chain re-verified from genesis",
+    "result": "{'V0': (True, 'ok'), 'V1': (True, 'ok'), 'V2': (True, 'ok'), 'V3': (True, 'ok')}"
+  },
+  {
+    "scenario": "13. next primary V3 forges a contract result",
+    "result": "committed after view change(s)=1; true result on ledger: DENIED:NO_CONSENT"
+  },
+  {
+    "scenario": "14. final heights (all validators identical)",
+    "result": "{\"V0\": 19, \"V1\": 19, \"V2\": 19, \"V3\": 19}"
+  }
+]
